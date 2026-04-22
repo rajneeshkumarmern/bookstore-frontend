@@ -1,3 +1,4 @@
+import { API_URL } from '../config'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
 import { useCart } from '../context/CartContext.jsx'
@@ -31,8 +32,10 @@ export default function BookCard({
       : price
 
   const incomingImage = image
-  const coverSrc = !incomingImage || imageErrored ? fallbackImage : incomingImage
-
+const coverSrc =
+  !incomingImage || imageErrored
+    ? `${API_URL}/images/love.jpg`
+    : `${API_URL}${incomingImage}`
   return (
     <article className="glass-panel group flex h-full flex-col overflow-hidden text-white outline-none transition-all duration-300 ease-in-out hover:-translate-y-1 hover:scale-105 hover:shadow-lg hover:border-white/15 hover:bg-white/[0.08] focus-within:ring-2 focus-within:ring-amber-400/50 motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100">
       <div className="relative aspect-[3/4] w-full overflow-hidden bg-gradient-to-b from-white/[0.04] to-white/[0.02]">
